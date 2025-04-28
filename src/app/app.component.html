@@ -3,16 +3,18 @@
 <main>
   <ul id="users">
     <li>
-      <app-user [id]="userData[0].id" [name]="userData[0].name" [avatar]="userData[0].avatar" />
+      <app-user [user]="userData[0]" (select)="onUserButtonClick($event)" />
     </li>
     <li>
-      <app-user [id]="userData[0].id"  [name]="userData[1].name" [avatar]="userData[1].avatar" />
+      <app-user [user]="userData[1]" (select)="onUserButtonClick($event)" />
     </li>
     <li>
-      <app-user [id]="userData[0].id" [name]="userData[2].name" [avatar]="userData[2].avatar" />
+      <app-user [user]="userData[2]" (select)="onUserButtonClick($event)" />
     </li>
     <li>
-      <app-user [id]="userData[0].id" [name]="userData[3].name" [avatar]="userData[3].avatar" />
+      <app-user [user]="userData[3]" (select)="onUserButtonClick($event)" />
     </li>
   </ul>
+
+  <app-task [name]="selectedUser?.name" />
 </main>
