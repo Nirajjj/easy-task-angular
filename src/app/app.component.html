@@ -2,19 +2,16 @@
 
 <main>
   <ul id="users">
+    @for (user of userData; track user.id) {
     <li>
-      <app-user [user]="userData[0]" (select)="onUserButtonClick($event)" />
+      <app-user [user]="user" (select)="onUserButtonClick($event)" />
     </li>
-    <li>
-      <app-user [user]="userData[1]" (select)="onUserButtonClick($event)" />
-    </li>
-    <li>
-      <app-user [user]="userData[2]" (select)="onUserButtonClick($event)" />
-    </li>
-    <li>
-      <app-user [user]="userData[3]" (select)="onUserButtonClick($event)" />
-    </li>
+    }
   </ul>
+  @if(selectedUser) {
+  <app-task [name]="selectedUser.name" />
 
-  <app-task [name]="selectedUser?.name" />
+  } @else {
+  <p>choose user to see task!</p>
+  }
 </main>
