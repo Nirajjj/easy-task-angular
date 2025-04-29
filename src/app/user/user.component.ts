@@ -24,6 +24,7 @@ interface User {
 export class UserComponent {
   @Input({ required: true }) user!: User;
   @Output() select = new EventEmitter();
+  @Input({required: true}) selectedUser!: Boolean
   // selectedUser = DUMMY_USERS[randomIndex];
   // selectedUser = signal(DUMMY_USERS[randomIndex]);
   // getImage = computed(() => 'assets/users/' + this.avatar());
@@ -31,7 +32,9 @@ export class UserComponent {
   get getImage() {
     return 'assets/users/' + this.user.avatar;
   }
-
+  // isSelectedUser() {
+  //   selectedUserId = this.user.id === this.selectedUserId
+  // }
   onUserButtonClick() {
     this.select.emit(this.user.id);
     // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);

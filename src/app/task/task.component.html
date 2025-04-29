@@ -1,13 +1,16 @@
+@if (isAddTask){
+  <app-task-new (isModalClose)="onCloseModal($event)"/>
+}
 <section id="tasks">
   <header>
     <h1>{{ selectedUser?.name }}</h1>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onTaskAddClick()">Add Task</button>
     </menu>
   </header>
   <ul>
     @for(task of currentUserTasks; track task.userId) {
-    <li><app-individual-task [userTask]="task"/></li>
+    <li><app-individual-task [userTask]="task" (complete)="onClickComplete($event)"/></li>
   }
   </ul>
 </section>

@@ -4,6 +4,6 @@
   <time>{{userTask.dueDate}}</time>
   <p>{{userTask.summery}}</p>
   <p class="actions">
-    <button>Complete</button>
+    <button (click)="onClickComplete(userTask.id)">Complete</button>
   </p>
 </article>

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IndividualTaskComponent } from './individual-task/individual-task.component';
+import { TaskNewComponent } from './task-new/task-new.component';
 interface User {
   id: string;
   name: string;
@@ -15,7 +16,7 @@ interface Task {
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [IndividualTaskComponent],
+  imports: [IndividualTaskComponent, TaskNewComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
 })
@@ -23,6 +24,7 @@ interface Task {
 export class TaskComponent {
   @Input() selectedUser: User | undefined;
   currentUserTask: Task[] | undefined
+  isAddTask = false
   tasks = [
 
     {
@@ -50,6 +52,18 @@ export class TaskComponent {
   ]
   get currentUserTasks() {
     return this.tasks.filter((task)=> this.selectedUser?.id === task.userId)
+    
+  }
+  onClickComplete(taskId: string) {
+    this.tasks = this.tasks.filter(task=> task.id !== taskId)
+  }
+
+  onTaskAddClick() {
+    this.isAddTask = true
+  }
+
+  onCloseModal(isModalClose: boolean) {
+    this.isAddTask = isModalClose
     
   }
 }
