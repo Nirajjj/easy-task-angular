@@ -26,7 +26,7 @@ export class UserComponent {
   @Output() select = new EventEmitter();
   // selectedUser = DUMMY_USERS[randomIndex];
   // selectedUser = signal(DUMMY_USERS[randomIndex]);
-  getImage = computed(() => 'assets/users/' + this.avatar());
+  // getImage = computed(() => 'assets/users/' + this.avatar());
 
   get getImage() {
     return 'assets/users/' + this.user.avatar;
